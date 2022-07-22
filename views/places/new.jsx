@@ -1,14 +1,23 @@
 const React = require('react')
 const Def = require('../default')
 
-function newForm() {
+
+
+
+
+
+
+
+
+
+function new_form() {
     return (
         <Def>
             <main>
-                <h1>New Form</h1>
+                <h1>Add a New Place</h1>
             </main>
         </Def>
     )
 }
 
-module.exports = newForm
+module.exports = new_form
