@@ -1,3 +1,4 @@
+const { stringify } = require('postcss')
 const React = require('react')
 const Def = require('../default')
 
@@ -13,6 +14,7 @@ function showDetails(data) {
                 <p>{data.place.cuisines}</p>
                 <a href={`/places/${data.id}/edit`} className='btn btn-warning'>
                     Edit
+                    {console.log('show.jsx testing', (data.id))}
                 </a>
                 <form method='POST' action={`/places/${data.id}?_method=DELETE`}>
                     <button type='submit' className='btn btn-danger'>

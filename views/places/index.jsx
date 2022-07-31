@@ -1,4 +1,5 @@
 const React = require('react')
+// const places = require('../../models/places')
 const Def = require('../default')
 
 
