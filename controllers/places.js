@@ -2,6 +2,7 @@ const router = require('express').Router()
 const db = require('../models')
 
 router.get('/', (req, res) => {
+    console.log('getting place')
     db.Place.find()
         .then((places) => {
             res.render('places/index', { places })
@@ -50,7 +51,6 @@ router.get('/:id', (req, res) => {
             console.log('err', err)
             res.render('error404')
         })
-    // res.send('GET /places/:id stub')
 })
 
 router.put('/:id', (req, res) => {
