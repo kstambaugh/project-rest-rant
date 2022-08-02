@@ -1,8 +1,8 @@
-const { stringify } = require('postcss')
 const React = require('react')
 const Def = require('../default')
 
-function showDetails(data) {
+function show(data) {
+    console.log('data', data)
     return (
         <Def>
             <main>
@@ -26,4 +26,4 @@ function showDetails(data) {
     )
 }
 
-module.exports = showDetails
+module.exports = show   
