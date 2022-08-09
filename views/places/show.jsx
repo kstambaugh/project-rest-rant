@@ -2,13 +2,30 @@ const React = require('react')
 const Def = require('../default')
 
 function show(data) {
-    console.log('this is the show data', data.place)
     let comments = (
         <h3 className='inactive'>
             No Comments Yet!
         </h3>
     )
+    let rating = (
+        <h3 className='inactive'>
+            Not yet rated
+        </h3>
+    )
     if (data.place.comments.length) {
+        let sumRatings = data.place.comments.reduce((tot, c) => {
+            return tot + c.stars
+        }, 0)
+        let averageRating = Math.round(sumRatings / data.place.comments.length)
+        let stars = ''
+        for (let i = 0; i < averageRating; i++) {
+            stars += '*'
+        }
+        rating = (
+            <h3>
+                {stars} stars
+            </h3>
+        )
         comments = data.place.comments.map(c => {
             return (
                 <div className='border'>
@@ -18,6 +35,7 @@ function show(data) {
                         <strong>- {c.author}</strong>
                     </h3>
                     <h4>Rating: {c.stars}</h4>
+
                 </div>
             )
         })
@@ -27,6 +45,7 @@ function show(data) {
             <main>
                 <h1>{data.place.name}</h1>
                 <h3>Rating</h3>
+                {rating}
                 <p>{data.place.rating}</p>
 
                 <img src={data.place.pic} alt={data.place.name} />
@@ -67,7 +86,7 @@ function show(data) {
                         </div>
                         <div className='form-group col-sm-4'>
                             <label htmlFor='stars'>Stars</label>
-                            <input className='form-control' type='number' step='5' id='stars' name='stars' required />
+                            <input className='form-control' type='number' step='1' min='1' max='5' id='stars' name='stars' required />
                         </div>
                     </div>
 
