@@ -17,6 +17,9 @@ app.use('/places', require('./controllers/places'))
 app.get('/', (req, res) => {
     res.render('home')
 })
+app.post('/', (req, res) => {
+    res.send('got it')
+})
 
 app.get('*', (req, res) => {
     res.render('error404')
